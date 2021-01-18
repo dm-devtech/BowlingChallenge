@@ -35,3 +35,6 @@ myScore.total(3)
 
 #### Future features:
 - Interface using jQuery
+
+#### Challenge specifications
+- (Link to original challenge)[https://github.com/makersacademy/bowling-challenge]
