@@ -37,4 +37,4 @@ myScore.total(3)
 - Interface using jQuery
 
 #### Challenge specifications
-- (Link to original challenge)[https://github.com/makersacademy/bowling-challenge]
+- [Link to original challenge](https://github.com/makersacademy/bowling-challenge)
