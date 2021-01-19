@@ -15,7 +15,7 @@ class Scorecard{
   };
 
   checkFrameNotAboveTen(input) {
-    if (input > 10) throw new Error('You cant roll more than 10')
+    if (input > 10) throw new Error('You cant roll more than 10 in one turn')
   }
 
   isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2) {
