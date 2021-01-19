@@ -10,9 +10,19 @@ class Scorecard{
   };
 
   addRoll(turn, pins) {
-     this.checkFrameNotAboveTen(pins)
-     this.score[turn] = pins
+    this.turnCheck(turn)
+    this.checkFrameNotAboveTen(pins)
+    this.score[turn] = pins
   };
+
+  turnFinder(turn) {
+    let decimal = (turn - Math.floor(turn)).toFixed(1);
+    return parseFloat(decimal)
+  }
+
+  turnCheck(turn) {
+    if (this.turnFinder(turn) === 0.3 && turn < 10) throw new Error('You can only enter a third roll for the tenth frame')
+  }
 
   checkFrameNotAboveTen(input) {
     if (input > 10) throw new Error('You cant roll more than 10 in one turn')

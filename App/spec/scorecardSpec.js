@@ -154,5 +154,9 @@ describe('Scorecard class', function() {
     it('user cant enter more than 10 in one roll', function() {
       expect(function() {scorecard.addRoll(1.1, 11)}).toThrowError('You cant roll more than 10 in one turn')
     });
+
+    it('user cannot enter a third turn unless its the tenth frame', function() {
+      expect(function() {scorecard.addRoll(1.3, 6)}).toThrowError('You can only enter a third roll for the tenth frame')
+    });
   });
 });
