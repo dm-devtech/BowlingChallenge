@@ -1,6 +1,8 @@
 ## Bowling Scorecard
 
 #### Instructions
+Open index.html (in the App folder) and do the following in the browser console:
+
 1. Create a new instance of the Scorecard class (e.g. myScore = new Scorecard)
 2. To add rolls to the scorecard use the addRoll(FrameRoll, pinsKnockedDown) function.
    E.g. A player knocks down 5 pins in frame 1 roll 1 enter myScore.addRoll(1.1, 5)
