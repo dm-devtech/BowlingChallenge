@@ -21,7 +21,7 @@ class Scorecard{
   }
 
   turnCheck(turn) {
-    if (this.turnFinder(turn) >= 0.3 && Math.floor(turn) < 10) throw new Error('You can only enter a third roll for the tenth frame')
+    if (this.turnFinder(turn) >= 0.3 && turn < 10) throw new Error('You can only enter a third roll for the tenth frame')
     if (turn > 10.3) throw new Error('You cannot enter a turn higher than turn 10 frame 3')
   }
 
