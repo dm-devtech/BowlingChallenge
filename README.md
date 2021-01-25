@@ -21,6 +21,9 @@ Clone the repo then open index.html (in the App folder) and do the following in 
 - Copy the path of SpecRunner.html (in the App folder)
 - Paste the file link into your web browser
 
+#### Test Coverage
+![Coverage](App\coverage\images\Coverage.JPG)
+
 #### Console code example
 ```
 myScore = new Scorecard
