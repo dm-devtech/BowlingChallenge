@@ -1,0 +1,23 @@
+{
+  "name": "bowling-scorecard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "nyc --reporter=html jasmine"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "jasmine": "^3.6.4",
+    "jasmine-core": "^3.6.0",
+    "nyc": "^15.1.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "npm-check-updates": "^11.0.2"
+  }
+}

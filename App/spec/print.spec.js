@@ -1,6 +1,9 @@
+const Print = require('../src/Print.js')
+const Scorecard = require('../src/Scorecard.js')
+
 describe('Print class', function() {
-  var scorecard
-  var print
+  let scorecard
+  let print
 
   beforeEach(function() {
     printer = new Print;
