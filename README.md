@@ -22,7 +22,7 @@ Clone the repo then open index.html (in the App folder) and do the following in 
 - Paste the file link into your web browser
 
 #### Test Coverage
-![Coverage](App\coverage\images\Coverage.JPG)
+![Coverage](App/coverage/images/Coverage.JPG)
 
 #### Console code example
 ```
