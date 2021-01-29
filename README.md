@@ -39,7 +39,7 @@ myScore.total(3)
 ```
 
 #### Future features:
-- Interface using jQuery
+- App interface rather than console interaction
 
 #### Challenge specifications
 - [Link to original challenge](https://github.com/makersacademy/bowling-challenge)
