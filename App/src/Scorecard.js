@@ -1,5 +1,3 @@
-const Print = require('../src/Print.js')
-
 class Scorecard {
 
   constructor(printer = new Print){
@@ -12,65 +10,63 @@ class Scorecard {
   };
 
   addRoll(turn, pins) {
-    this.turnCheck(turn)
-    this.checkFrameNotAboveTen(pins)
+    this.#turnCheck(turn)
+    this.#checkFrameNotAboveTen(pins)
     this.score[turn] = pins
   };
 
-  turnFinder(turn) {
+  #turnFinder(turn) {
     let decimal = (turn - Math.floor(turn)).toFixed(1);
     return parseFloat(decimal)
   }
 
-  turnCheck(turn) {
-    if (this.turnFinder(turn) >= 0.3 && turn < 10) throw new Error('You can only enter a third roll for the tenth frame')
+  #turnCheck(turn) {
+    if (this.#turnFinder(turn) >= 0.3 && turn < 10) throw new Error('You can only enter a third roll for the tenth frame')
     if (turn > 10.3) throw new Error('You cannot enter a turn higher than turn 10 frame 3')
   }
 
-  checkFrameNotAboveTen(input) {
+  #checkFrameNotAboveTen(input) {
     if (input > 10) throw new Error('You cant roll more than 10 in one turn')
   }
 
-  isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2) {
+  #isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2) {
     return (currRoll1 === 10 || currRoll2 === 10) && !isNaN(nextRoll1 && nextRoll2)
   };
 
-  isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2) {
+  #isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2) {
     return (currRoll1 + currRoll2 === 10)  && !isNaN(nextRoll1)
   };
 
-  tenthFrameBonus(frame) {
+  #tenthFrameBonus(frame) {
     let [tenthRoll1, tenthRoll2, tenthRoll3] = [this.score[frame+10.1], this.score[frame+10.2], this.score[frame+10.3]]
     if(tenthRoll1+tenthRoll2 === 10 || 20) return tenthRoll3
   }
 
-  strikeBonus(currRoll1, currRoll2, nextRoll1, nextRoll2) {
-    if (this.isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2)) return (nextRoll1 + nextRoll2)
-    return (this.isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2)) ? nextRoll1 : 0
+  #strikeBonus(currRoll1, currRoll2, nextRoll1, nextRoll2) {
+    if (this.#isStrike(currRoll1, currRoll2, nextRoll1, nextRoll2)) return (nextRoll1 + nextRoll2)
+    return (this.#isSpare(currRoll1, currRoll2, nextRoll1, nextRoll2)) ? nextRoll1 : 0
   }
 
-  currentAndNextRolls(frame) {
+  #currentAndNextRolls(frame) {
     let rolls = []
     rolls.push(this.score[frame+0.1], this.score[frame+0.2], this.score[frame+1.1], this.score[frame+1.2])
     return rolls
   }
 
-  total(frame) {
+  #total(frame) {
     let score = 0
     while (frame > 0) {
-    let [currRoll1, currRoll2, nextRoll1, nextRoll2] = this.currentAndNextRolls(frame)
-    score += (currRoll1 + currRoll2 + this.strikeBonus(currRoll1, currRoll2, nextRoll1, nextRoll2))
+    let [currRoll1, currRoll2, nextRoll1, nextRoll2] = this.#currentAndNextRolls(frame)
+    score += (currRoll1 + currRoll2 + this.#strikeBonus(currRoll1, currRoll2, nextRoll1, nextRoll2))
     frame -= 1;
     };
-    score += this.tenthFrameBonus(frame)
+    score += this.#tenthFrameBonus(frame)
     return score
   };
 
   print(frame) {
     if(frame === undefined) throw new Error('You must enter a frame number to print')
-    return this.printer.output(this.score, this.total(frame), frame)
+    return this.printer.output(this.score, this.#total(frame), frame)
   };
 
 };
-
-module.exports = Scorecard

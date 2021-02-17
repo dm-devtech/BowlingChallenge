@@ -11,5 +11,3 @@ class Print{
 }
 
 }
-
-module.exports = Print;
