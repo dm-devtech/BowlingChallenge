@@ -1,5 +1,4 @@
 const Print = require('../src/Print.js')
-const Scorecard = require('../src/Scorecard.js')
 
 describe('Print class', function() {
   let scorecard
@@ -7,7 +6,6 @@ describe('Print class', function() {
 
   beforeEach(function() {
     printer = new Print;
-    scorecard = new Scorecard;
   });
 
   it('when given hash output function returns all turns', function() {

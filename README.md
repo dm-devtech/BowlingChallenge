@@ -14,12 +14,14 @@ Clone the repo then open index.html (in the App folder) and do the following in 
 
 #### Tech used:
 - Javascript
+- Node (package management)
 - Testing framework: Jasmine
 
 #### Running tests
 - To run tests clone the repo
-- Copy the path of SpecRunner.html (in the App folder)
-- Paste the file link into your web browser
+- Each class should be exported as a module
+- Ensure you are in the App folder (BowlingScorecard/App)
+- Run ```npm test```
 
 #### Test Coverage
 ![Coverage](App/coverage/images/Coverage.JPG)
