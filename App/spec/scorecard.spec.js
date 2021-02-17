@@ -6,7 +6,8 @@ describe('Scorecard class', function() {
   let print
 
   beforeEach(function() {
-    scorecard = new Scorecard;
+    print = new Print
+    scorecard = new Scorecard(print)
   });
 
   describe('this.score variable', function() {
@@ -24,9 +25,11 @@ describe('Scorecard class', function() {
 
   describe('#total method', function() {
     it('checks that total adds one frame together', function(){
+
       scorecard.addRoll(1.1, 5)
       scorecard.addRoll(1.2, 3)
       expect(scorecard.total(1)).toEqual(8)
+
     });
 
     it('checks that total adds 4 frames together', function(){
@@ -138,12 +141,14 @@ describe('Scorecard class', function() {
 
   describe('#print method', function() {
     it('prints frame, roll, pins knocked and score', function() {
+      spyOn(print, 'output').and.callThrough()
       scorecard.addRoll(1.1, 0)
       scorecard.addRoll(1.2, 2)
       scorecard.addRoll(2.1, 5)
       scorecard.addRoll(2.2, 3)
       let string = scorecard.print(2)
       expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\nFrame.Roll = 2.1 Pins knocked = 5\nFrame.Roll = 2.2 Pins knocked = 3\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 0\nFrame.Roll = 4.1 Pins knocked = 0\nFrame.Roll = 4.2 Pins knocked = 0\nFrame.Roll = 5.1 Pins knocked = 0\nFrame.Roll = 5.2 Pins knocked = 0\nFrame.Roll = 6.1 Pins knocked = 0\nFrame.Roll = 6.2 Pins knocked = 0\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 0\nFrame.Roll = 8.1 Pins knocked = 0\nFrame.Roll = 8.2 Pins knocked = 0\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 0\nFrame.Roll = 10.1 Pins knocked = 0\nFrame.Roll = 10.2 Pins knocked = 0\nFrame.Roll = 10.3 Pins knocked = 0\nYour score = 10")
+      expect(print.output).toHaveBeenCalled()
     });
   });
 
