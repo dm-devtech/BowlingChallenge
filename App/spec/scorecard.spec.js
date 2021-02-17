@@ -12,14 +12,20 @@ describe('Scorecard class', function() {
 
   describe('this.score variable', function() {
     it('checks there is a blank scorecard to begin with', function(){
+      const spy = spyOn(print, 'output').and.callThrough()
       expect(scorecard.print(10)).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 0\nFrame.Roll = 2.1 Pins knocked = 0\nFrame.Roll = 2.2 Pins knocked = 0\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 0\nFrame.Roll = 4.1 Pins knocked = 0\nFrame.Roll = 4.2 Pins knocked = 0\nFrame.Roll = 5.1 Pins knocked = 0\nFrame.Roll = 5.2 Pins knocked = 0\nFrame.Roll = 6.1 Pins knocked = 0\nFrame.Roll = 6.2 Pins knocked = 0\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 0\nFrame.Roll = 8.1 Pins knocked = 0\nFrame.Roll = 8.2 Pins knocked = 0\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 0\nFrame.Roll = 10.1 Pins knocked = 0\nFrame.Roll = 10.2 Pins knocked = 0\nFrame.Roll = 10.3 Pins knocked = 0\nYour score = 0")
+      expect(spy).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('checks the reset function resets the scorecard', function(){
+      const spy = spyOn(print, 'output').and.callThrough()
       scorecard.addRoll(1.1, 4)
       scorecard.addRoll(1.2, 5)
       scorecard.resetScorecard()
       expect(scorecard.print(10)).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 0\nFrame.Roll = 2.1 Pins knocked = 0\nFrame.Roll = 2.2 Pins knocked = 0\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 0\nFrame.Roll = 4.1 Pins knocked = 0\nFrame.Roll = 4.2 Pins knocked = 0\nFrame.Roll = 5.1 Pins knocked = 0\nFrame.Roll = 5.2 Pins knocked = 0\nFrame.Roll = 6.1 Pins knocked = 0\nFrame.Roll = 6.2 Pins knocked = 0\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 0\nFrame.Roll = 8.1 Pins knocked = 0\nFrame.Roll = 8.2 Pins knocked = 0\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 0\nFrame.Roll = 10.1 Pins knocked = 0\nFrame.Roll = 10.2 Pins knocked = 0\nFrame.Roll = 10.3 Pins knocked = 0\nYour score = 0")
+      expect(spy).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 
