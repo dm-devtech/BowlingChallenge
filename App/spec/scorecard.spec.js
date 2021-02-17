@@ -24,8 +24,26 @@ describe('Scorecard class', function() {
   });
 
   describe('#print method', function() {
+    it('prints frame, roll, pins knocked and score for 5 frames', function() {
+      const spy = spyOn(print, 'output').and.callThrough()
+      scorecard.addRoll(1.1, 0)
+      scorecard.addRoll(1.2, 2)
+      scorecard.addRoll(2.1, 8)
+      scorecard.addRoll(2.2, 1)
+      scorecard.addRoll(3.1, 0)
+      scorecard.addRoll(3.2, 1)
+      scorecard.addRoll(4.1, 8)
+      scorecard.addRoll(4.2, 2)
+      scorecard.addRoll(5.1, 6)
+      scorecard.addRoll(5.2, 0)
+      let string = scorecard.print(5)
+      expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\nFrame.Roll = 2.1 Pins knocked = 8\nFrame.Roll = 2.2 Pins knocked = 1\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 1\nFrame.Roll = 4.1 Pins knocked = 8\nFrame.Roll = 4.2 Pins knocked = 2\nFrame.Roll = 5.1 Pins knocked = 6\nFrame.Roll = 5.2 Pins knocked = 0\nFrame.Roll = 6.1 Pins knocked = 0\nFrame.Roll = 6.2 Pins knocked = 0\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 0\nFrame.Roll = 8.1 Pins knocked = 0\nFrame.Roll = 8.2 Pins knocked = 0\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 0\nFrame.Roll = 10.1 Pins knocked = 0\nFrame.Roll = 10.2 Pins knocked = 0\nFrame.Roll = 10.3 Pins knocked = 0\nYour score = 34")
+      expect(spy).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
     it('prints frame, roll, pins knocked and score for 10 frames', function() {
-      spyOn(print, 'output').and.callThrough()
+      const spy = spyOn(print, 'output').and.callThrough()
       scorecard.addRoll(1.1, 0)
       scorecard.addRoll(1.2, 2)
       scorecard.addRoll(2.1, 8)
@@ -49,7 +67,8 @@ describe('Scorecard class', function() {
       scorecard.addRoll(10.3, 10)
       let string = scorecard.print(10)
       expect(string).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 2\nFrame.Roll = 2.1 Pins knocked = 8\nFrame.Roll = 2.2 Pins knocked = 1\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 1\nFrame.Roll = 4.1 Pins knocked = 8\nFrame.Roll = 4.2 Pins knocked = 2\nFrame.Roll = 5.1 Pins knocked = 5\nFrame.Roll = 5.2 Pins knocked = 3\nFrame.Roll = 6.1 Pins knocked = 6\nFrame.Roll = 6.2 Pins knocked = 3\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 2\nFrame.Roll = 8.1 Pins knocked = 8\nFrame.Roll = 8.2 Pins knocked = 1\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 1\nFrame.Roll = 10.1 Pins knocked = 10\nFrame.Roll = 10.2 Pins knocked = 10\nFrame.Roll = 10.3 Pins knocked = 10\nYour score = 86")
-      expect(print.output).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 
