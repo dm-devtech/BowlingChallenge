@@ -1,3 +1,5 @@
+const Print = require('./Print.js')
+
 class Scorecard {
 
   constructor(printer = new Print){
@@ -70,3 +72,5 @@ class Scorecard {
   };
 
 };
+
+module.exports = Scorecard;
