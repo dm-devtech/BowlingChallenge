@@ -1,4 +1,4 @@
-const Print = require('./Print.js')
+const Print = require('../src/Print.js')
 
 class Scorecard {
 
@@ -67,10 +67,10 @@ class Scorecard {
   };
 
   print(frame) {
-    let newtotal = this.total(frame)
-    return this.printer.output(this.score, newtotal, frame)
+    if(frame === undefined) throw new Error('You must enter a frame number to print')
+    return this.printer.output(this.score, this.total(frame), frame)
   };
 
 };
 
-module.exports = Scorecard;
+module.exports = Scorecard
