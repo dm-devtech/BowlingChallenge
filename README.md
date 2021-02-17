@@ -19,7 +19,7 @@ Clone the repo then open index.html (in the App folder) and do the following in 
 
 #### Running tests
 - To run tests clone the repo
-- Each class should be exported as a module
+- Each class should be exported as a module and Print.js is required in Scorecard.js
 - Ensure you are in the App folder (BowlingScorecard/App)
 - Run ```npm test```
 
