@@ -8,18 +8,21 @@ describe('Scorecard class', function() {
   beforeEach(function() {
     print = new Print
     scorecard = new Scorecard(print)
+    spy = spyOn(print, 'output').and.callThrough()
   });
+
+  afterEach(function() {
+    spy.calls.reset();
+  })
 
   describe('this.score variable', function() {
     it('checks there is a blank scorecard to begin with', function(){
-      const spy = spyOn(print, 'output').and.callThrough()
       expect(scorecard.print(10)).toEqual("Frame.Roll = 1.1 Pins knocked = 0\nFrame.Roll = 1.2 Pins knocked = 0\nFrame.Roll = 2.1 Pins knocked = 0\nFrame.Roll = 2.2 Pins knocked = 0\nFrame.Roll = 3.1 Pins knocked = 0\nFrame.Roll = 3.2 Pins knocked = 0\nFrame.Roll = 4.1 Pins knocked = 0\nFrame.Roll = 4.2 Pins knocked = 0\nFrame.Roll = 5.1 Pins knocked = 0\nFrame.Roll = 5.2 Pins knocked = 0\nFrame.Roll = 6.1 Pins knocked = 0\nFrame.Roll = 6.2 Pins knocked = 0\nFrame.Roll = 7.1 Pins knocked = 0\nFrame.Roll = 7.2 Pins knocked = 0\nFrame.Roll = 8.1 Pins knocked = 0\nFrame.Roll = 8.2 Pins knocked = 0\nFrame.Roll = 9.1 Pins knocked = 0\nFrame.Roll = 9.2 Pins knocked = 0\nFrame.Roll = 10.1 Pins knocked = 0\nFrame.Roll = 10.2 Pins knocked = 0\nFrame.Roll = 10.3 Pins knocked = 0\nYour score = 0")
       expect(spy).toHaveBeenCalled()
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('checks the reset function resets the scorecard', function(){
-      const spy = spyOn(print, 'output').and.callThrough()
       scorecard.addRoll(1.1, 4)
       scorecard.addRoll(1.2, 5)
       scorecard.resetScorecard()
@@ -31,7 +34,6 @@ describe('Scorecard class', function() {
 
   describe('#print method', function() {
     it('prints frame, roll, pins knocked and score for 5 frames', function() {
-      const spy = spyOn(print, 'output').and.callThrough()
       scorecard.addRoll(1.1, 0)
       scorecard.addRoll(1.2, 2)
       scorecard.addRoll(2.1, 8)
@@ -49,7 +51,6 @@ describe('Scorecard class', function() {
     });
 
     it('prints frame, roll, pins knocked and score for 10 frames', function() {
-      const spy = spyOn(print, 'output').and.callThrough()
       scorecard.addRoll(1.1, 0)
       scorecard.addRoll(1.2, 2)
       scorecard.addRoll(2.1, 8)
