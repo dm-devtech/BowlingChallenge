@@ -92,8 +92,8 @@ describe('Scorecard class', function() {
       expect(function() {scorecard.addRoll(11.1, 6)}).toThrowError('You cannot enter a turn higher than turn 10 frame 3')
     });
 
-    it('user printing a scorecard without a frame number gives error', function() {
-      expect(function() {scorecard.print()}).toThrowError('You must enter a frame number to print')
+    it('user printing a scorecard with an incorrect frame number gives error', function() {
+      expect(function() {scorecard.print(11)}).toThrowError('You must enter a frame number of between 1-10')
     });
   });
 });

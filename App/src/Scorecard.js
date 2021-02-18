@@ -64,8 +64,8 @@ class Scorecard {
     return score
   };
 
-  print(frame) {
-    if(frame === undefined) throw new Error('You must enter a frame number to print')
+  print(frame = 10) {
+    if(frame >= 11 || frame <= 0) throw new Error('You must enter a frame number of between 1-10')
     return this.printer.output(this.score, this.#total(frame), frame)
   };
 
